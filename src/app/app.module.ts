@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
-import { DashboardModule } from './dashboard/dashboard.module';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -12,10 +10,9 @@ import { DashboardModule } from './dashboard/dashboard.module';
 
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
-    SharedModule,
-    DashboardModule
+    BrowserModule ,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

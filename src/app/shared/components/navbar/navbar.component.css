@@ -6,3 +6,7 @@ a {
 }
 
 
+.principal-text{
+  font-family: "Concert One", sans-serif;
+  text-shadow: 4px 3px 10px #000000;
+}
