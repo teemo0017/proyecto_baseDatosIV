@@ -4,6 +4,7 @@ import { InfoPrincipalComponent } from './components/info-principal/info-princip
 import { PageInicioComponent } from './page/page.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { AboutComponent } from './components/about/about.component';
+import { InicioRoutingModule } from './inicio-routing.module';
 
 
 
@@ -18,9 +19,10 @@ import { AboutComponent } from './components/about/about.component';
   ],
   imports: [
     CommonModule,
+InicioRoutingModule
 
   ],exports:[
-    AboutComponent
+
   ]
 })
 export class InicioModule { }
