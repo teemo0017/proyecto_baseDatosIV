@@ -6,7 +6,7 @@ import { userLogin } from '../../interfaces/userLogin';
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
-export class FormComponent {
+export class FormLoginComponent {
 
   @Output()
   public userEmiter : EventEmitter<userLogin> = new EventEmitter();

@@ -1,0 +1,27 @@
+
+<div class="d-flex align-items-center px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5 ">
+
+  <form  (ngSubmit)="emitUser()"  style="width: 23rem;"  class="was-validated">
+
+
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form2Example18">Username</label>
+      <input type="text" class="form-control form-control-lg" name="username" [(ngModel)]="user.username" required/>
+
+      <div class="invalid-feedback">Es necesario completar el campo usuario</div>
+    </div>
+
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form2Example28">Password</label>
+      <input type="password" [(ngModel)]="user.password" name="password" class="form-control form-control-lg" required />
+      <div class="invalid-feedback">Es necesario completar el campo contraseña</div>
+    </div>
+
+    <div class="pt-1 mb-4">
+      <button class="btn btn-info btn-lg btn-block w-100" type="submit">Login</button>
+    </div>
+
+
+
+  </form>
+</div>
