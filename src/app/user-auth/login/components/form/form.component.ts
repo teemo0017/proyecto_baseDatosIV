@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { userLogin } from '../../interfaces/userLogin';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
+import { userLogin } from '../../../interfaces/userLogin';
 
 @Component({
   selector: 'login-form',
@@ -8,8 +8,13 @@ import { userLogin } from '../../interfaces/userLogin';
 })
 export class FormLoginComponent {
 
+
   @Output()
   public userEmiter : EventEmitter<userLogin> = new EventEmitter();
+
+
+  @Input()
+  public error_inputs : boolean = false;
 
   user: userLogin = {
     username: '',

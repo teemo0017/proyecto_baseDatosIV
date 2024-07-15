@@ -13,16 +13,20 @@
   </div>
 
   <div>
-    <a class="mx-3 fw-lighter ">INICIO</a>
+    <a class="mx-3 fw-lighter " href="">INICIO</a>
     <a class="mx-3 fw-lighter  " href="">SOBRE NOSOTROS</a>
-    <a class="mx-3 fw-lighter " href="">SERVICIOS</a>
-    <a class="mx-3 fw-lighter " href="">GALERIA</a>
 
   </div>
 
   <div>
-    <button class="btn btn-light" routerLink="/user/login"  >Login</button>
+    <button *ngIf="(data$ | async)?.token == '' && (data$ | async)?.userId == 0  ; else dashboard " class="btn btn-light" routerLink="/user/login"  >Login</button>
+    <button *ngIf="(data$ | async)?.token !== '' " class="btn btn-danger ml-5"  (click)="logout()" >Logout</button>
+    <!-- <p  class="text-white">tengo info xd {{(data$ | async)?.token}}</p> -->
   </div>
+
+  <ng-template #dashboard>
+    <button class="btn btn-light" routerLink="/user/dashboard" >Ir a Dashboard</button>
+    </ng-template>
 
 
 </nav>

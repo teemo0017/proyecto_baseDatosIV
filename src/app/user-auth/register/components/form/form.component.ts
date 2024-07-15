@@ -14,15 +14,17 @@ export class FormRegisterComponent {
    user: userRegister = {
     username : '',
     password: '',
-    fistname: '',
+    firstname: '',
     lastname: '',
     country: '',
     email: '',
-    rol: 'USER'
+    phone : '',
+    age : '',
+    role: 'USER'
   }
 
   emitUser(): void{
-    // this.userEmiter.emit(this.user);
+    this.userEmiter.emit(this.user);
     console.log(this.user);
 }
 }

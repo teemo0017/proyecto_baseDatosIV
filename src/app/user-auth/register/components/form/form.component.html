@@ -5,7 +5,7 @@
       <div data-mdb-input-init class="form-outline">
         <label class="form-label" for="form3Example1m">Nombre</label>
 
-        <input type="text"  [(ngModel)]="user.fistname"  name="fistname" class="form-control form-control-lg" />
+        <input type="text"  [(ngModel)]="user.firstname"  name="fistname" class=" form-control form-control-lg" />
 
       </div>
     </div>
@@ -16,6 +16,27 @@
         <label class="form-label" for="form3Example1n">Apellido</label>
 
         <input type="text" [(ngModel)]="user.lastname"  name="lastname" class="form-control form-control-lg" />
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-4">
+      <div data-mdb-input-init class="form-outline">
+        <label class="form-label" for="form3Example1m">Telefono</label>
+
+        <input type="text"  [(ngModel)]="user.phone" maxlength="8" minlength="8"  name="phone" class="form-control form-control-lg" />
+
+      </div>
+    </div>
+
+
+    <div class="col-md-6 mb-4">
+      <div data-mdb-input-init class="form-outline">
+        <label class="form-label" for="form3Example1n">Edad</label>
+
+        <input type="number" [(ngModel)]="user.age" max="100" min="18"  name="age" class="form-control form-control-lg" />
 
       </div>
     </div>

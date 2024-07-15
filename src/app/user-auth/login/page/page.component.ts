@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../services/page.service';
-import { userLogin } from '../interfaces/userLogin';
+import { userLogin } from '../../interfaces/userLogin';
+import { userToken } from '../../interfaces/userToken';
+import { Router } from '@angular/router';
+import {jwtDecode } from 'jwt-decode';
+import { SharingService } from '../../../shared/service/sharing.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-page',
@@ -8,19 +13,49 @@ import { userLogin } from '../interfaces/userLogin';
   styleUrls: ['./page.component.css']
 })
 export class PageLoginComponent {
-
-  constructor(private loginService : LoginService){ }
-
+  public data$ : Observable<userToken>;
   public user! : userLogin;
+  public token? : userToken;
+  public error_inputs:boolean = false;
+
+  constructor(
+    private loginService : LoginService,
+    private router: Router,
+    private sharingService : SharingService
+
+  ){
+
+    this.data$ = sharingService.SharingToken;
+
+
+  }
 
   captureUserEmiter(userLogin : userLogin) : void{
 
-    this.test(userLogin);
+    this.verifyUser(userLogin);
 
   }
 
 
-  test(user : userLogin){
-    this.loginService.verifyUser(user.username,user.password);
+  verifyUser(user : userLogin): void{
+    this.loginService.verifyUser(user).subscribe(
+      (token) => {
+
+        if(token == null){
+           this.error_inputs = true;
+
+        }else{
+          this.error_inputs = false;
+         let user_id = jwtDecode(token.token).jti;
+         if(user_id){
+          this.sharingService.SharingTokenData = {token : token.token , userId: parseInt(user_id)}
+         }
+         this.router.navigateByUrl('/user/dashboard');
+
+        }
+      }
+    );
   }
+
+
 }

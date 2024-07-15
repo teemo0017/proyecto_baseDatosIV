@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { userLogin } from '../interfaces/userLogin';
+import { userLogin } from '../../interfaces/userLogin';
+import { userToken } from '../../interfaces/userToken';
+import { Observable,of,catchError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,14 +15,10 @@ export class LoginService {
 
 
 
-  verifyUser(username:string , password:string) : void {
-
-    const user : userLogin = {
-      username : username,
-      password : password
-    }
+  verifyUser( user : userLogin) : Observable<userToken  | null>{
 
     const url = this.apiUrl+this.endpoint;
-    this.http.post(url,user).subscribe(token => console.log(token));
+
+    return this.http.post<userToken>(url,user).pipe(catchError ( ()=> of(null)));
   }
 }
