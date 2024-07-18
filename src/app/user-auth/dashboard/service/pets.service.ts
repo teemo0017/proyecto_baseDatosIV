@@ -8,6 +8,7 @@ import { especiesInfo } from '../../interfaces/especiesInfo';
 import { citasInfo } from '../../interfaces/citasInfo';
 import { serviceInfo } from '../../interfaces/serviceInfo';
 import { addCite } from '../../interfaces/addcite';
+// import { addCite } from '../../interfaces/addcite';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,8 @@ export class PetService {
   private endpointRemoveCitesById : string = '/citas/remove';
   private endpointFindServicesPet : string = '/servicios';
   private endpointAddCite: string = '/citas/addcite';
+  private endpointEditPet: string = '/mascotas/editar';
+  private endpointfindPet: string = '/mascotas/buscar/pet';
 
 
   constructor(
@@ -157,5 +160,44 @@ export class PetService {
 
     }
 
+
+    editPet(idPet : number , pet : petInfo) : Observable<petInfo | null> {
+      let token_id : string = sessionStorage.getItem('jwt_token')!;
+      let user_id : string = sessionStorage.getItem('user_id')!;
+
+      const url  = new URL(`${this.apiUrl}${this.endpointEditPet}`);
+      url.searchParams.set('idPet',idPet.toString());
+      url.searchParams.set('idUser',user_id);
+      console.log(url.toString());
+       return this.http.post<petInfo>(url.toString(),pet,{
+        headers : {
+          'Content-Type': 'application/json; charset=utf-8',
+          'Accept': 'application/json',
+          'Authorization': `Bearer ${token_id}`
+        }
+      }).pipe(catchError ( ()=> of(null) ));
+
+
+    }
+
+
+    findPet(idPet : number) : Observable<petInfo | null> {
+      let token_id : string = sessionStorage.getItem('jwt_token')!;
+      // let user_id : string = sessionStorage.getItem('user_id')!;
+
+      const url  = `${this.apiUrl}${this.endpointfindPet}/${idPet}`;
+      // url.searchParams.set('userId',user_id);
+      // url.searchParams.set('petId',idPet.toString());
+
+       return this.http.get<petInfo>(url,{
+        headers : {
+          'Content-Type': 'application/json; charset=utf-8',
+          'Accept': 'application/json',
+          'Authorization': `Bearer ${token_id}`
+        }
+      }).pipe(catchError ( ()=> of(null) ));
+
+
+    }
 
 }

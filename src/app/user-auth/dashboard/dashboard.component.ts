@@ -52,5 +52,9 @@ constructor(
 
   }
 
+  editPet(id : number){
+
+  }
+
 
 }

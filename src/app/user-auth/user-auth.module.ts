@@ -10,6 +10,7 @@ import { FormRegisterComponent } from './register/components/form/form.component
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddPetsComponent } from './dashboard/components/add-pets/add-pets.component';
 import { AddCitaComponent } from './dashboard/components/add-cita/add-cita.component';
+import { EditPetsComponent } from './dashboard/components/edit-pets/edit-pets.component';
 
 
 
@@ -25,6 +26,7 @@ import { AddCitaComponent } from './dashboard/components/add-cita/add-cita.compo
     DashboardComponent,
     AddPetsComponent,
     AddCitaComponent,
+    EditPetsComponent
   ],
   imports: [
     CommonModule,

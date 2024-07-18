@@ -5,6 +5,7 @@ import { PageRegisterComponent } from './register/page/page.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddPetsComponent } from './dashboard/components/add-pets/add-pets.component';
 import { AddCitaComponent } from './dashboard/components/add-cita/add-cita.component';
+import { EditPetsComponent } from './dashboard/components/edit-pets/edit-pets.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,10 @@ const routes: Routes = [
   },  {
     path: 'register/cite',
     component : AddCitaComponent
+  },
+  {
+    path: 'edit/pet/:id',
+    component : EditPetsComponent
   }
 ];
 
